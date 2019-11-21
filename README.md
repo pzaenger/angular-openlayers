@@ -1,6 +1,6 @@
 # angular-openlayers
 
-Just a simple example how to use [OpenLayers](https://openlayers.org/) (6.1) within an [Angular](https://angular.io/) (8.2) application.
+Just a simple example of how to use [OpenLayers](https://openlayers.org/) (6.1) within an [Angular](https://angular.io/) (8.2) application.
 
 ## Installation
 
