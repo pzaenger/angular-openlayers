@@ -1,1 +1,5 @@
 <div id="map" class="map"></div>
+
+<div class="controls">
+  <button [disabled]="!geolocation" (click)="locate()">My position</button>
+</div>

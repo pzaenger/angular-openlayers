@@ -6,6 +6,7 @@ import ZoomToExtent from 'ol/control/ZoomToExtent';
 
 import { fromLonLat } from 'ol/proj';
 import { defaults as defaultControls } from 'ol/control';
+import { defaults as defaultInteractions, PinchZoom } from 'ol/interaction';
 
 /**
  * Geo.
@@ -22,6 +23,9 @@ export class Geo {
   constructor(view: { zoom: number; center: [number, number]; } = { zoom: 2, center: [0, 0] }) {
     this.map = new Map({
       target: 'map',
+      interactions: defaultInteractions().extend([
+        new PinchZoom()
+      ]),
       layers: [
         new TileLayer({
           source: new XYZ({
@@ -31,7 +35,8 @@ export class Geo {
       ],
       view: new View({
         center: fromLonLat(view.center),
-        zoom: view.zoom
+        zoom: view.zoom,
+        constrainResolution: true
       }),
       controls: defaultControls().extend([
         new ZoomToExtent({
@@ -42,5 +47,15 @@ export class Geo {
         })
       ])
     });
+  }
+
+  /**
+   * Sets the view to the accordant zoom and center.
+   * @param zoom Zoom.
+   * @param center Center in long/lat.
+   */
+  setView(zoom: number, center: [number, number]) {
+    this.map.getView().setZoom(10);
+    this.map.getView().setCenter(fromLonLat(center));
   }
 }

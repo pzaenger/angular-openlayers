@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Geo } from '../model/geo';
 
 @Component({
@@ -7,21 +7,28 @@ import { Geo } from '../model/geo';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
   geo: Geo;
+  geolocation;
 
   constructor() {
   }
 
+  ngOnInit() {
+    this.geo = new Geo();
+    this.geolocation = navigator.geolocation;
+  }
+
   ngAfterViewInit() {
-    // Locate user's position
+    this.geo.map.updateSize();
+  }
+
+  locate() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        this.geo = new Geo({ zoom: 10, center: [position.coords.longitude, position.coords.latitude] });
+        this.geo.setView(10, [position.coords.longitude, position.coords.latitude]);
       });
-    } else {
-      this.geo = new Geo();
     }
   }
 }
