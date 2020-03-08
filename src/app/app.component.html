@@ -1,5 +1,15 @@
 <div id="map" class="map"></div>
 
 <div class="controls">
-  <button [disabled]="!geolocation" (click)="locate()">My position</button>
+  <ul>
+    <li>
+      <button (click)="geo.setSource('osm')">OSM</button>
+    </li>
+    <li>
+      <button (click)="geo.setSource('stamen')">Stamen</button>
+    </li>
+    <li>
+      <button [disabled]="!geolocation" (click)="locate()">Position</button>
+    </li>
+  </ul>
 </div>
