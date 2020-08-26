@@ -1,5 +1,7 @@
 <div class="toolbar">
   <button class="button" [disabled]="!geolocation" (click)="locate()">My position</button>
+  <button class="button" (click)="geo.setSource('osm')">OSM</button>
+  <button class="button" (click)="geo.setSource('stamen')">Stamen</button>
 </div>
 
 <div id="map" class="map"></div>
