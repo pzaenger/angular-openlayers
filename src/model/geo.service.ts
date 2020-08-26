@@ -20,15 +20,17 @@ import { Injectable } from '@angular/core';
 })
 export class GeoService {
 
-  // OL-Map
+  /** OL-Map. */
   readonly map: Map;
 
-  // Basic layer
+  /** Basic layer. */
   readonly layerTile: LayerTile;
+
+  /** Sources for basic layer. */
+  readonly sources: { readonly osm: SourceOsm; readonly stamen: SourceStamen; };
 
   /**
    * Initialise the map.
-   * @param view View with initial center and zoom.
    */
   constructor() {
     this.sources = {
