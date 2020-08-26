@@ -1,27 +1,24 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { Geo } from '../model/geo';
+import { GeoService } from '../model/geo.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-
 export class AppComponent implements OnInit, AfterViewInit {
 
-  geo: Geo;
-  geolocation;
+  geolocation: Geolocation;
 
-  constructor() {
+  constructor(public geo: GeoService) {
   }
 
   ngOnInit() {
-    this.geo = new Geo();
     this.geolocation = navigator.geolocation;
   }
 
   ngAfterViewInit() {
-    this.geo.map.updateSize();
+    this.geo.updateSize();
   }
 
   locate() {

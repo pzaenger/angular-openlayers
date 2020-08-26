@@ -7,22 +7,24 @@ import ZoomToExtent from 'ol/control/ZoomToExtent';
 import { fromLonLat } from 'ol/proj';
 import { defaults as defaultControls } from 'ol/control';
 import { defaults as defaultInteractions, PinchZoom } from 'ol/interaction';
+import { Injectable } from '@angular/core';
 
 /**
  * Geo.
  */
-export class Geo {
+@Injectable({
+  providedIn: 'root'
+})
+export class GeoService {
 
-  /* Map. */
-  public readonly map: Map;
+  // OL-Map
+  readonly map: Map;
 
   /**
    * Initialise the map.
-   * @param view View with initial center and zoom.
    */
-  constructor(view: { zoom: number; center: [number, number]; } = { zoom: 2, center: [0, 0] }) {
+  constructor() {
     this.map = new Map({
-      target: 'map',
       interactions: defaultInteractions().extend([
         new PinchZoom()
       ]),
@@ -34,8 +36,8 @@ export class Geo {
         })
       ],
       view: new View({
-        center: fromLonLat(view.center),
-        zoom: view.zoom,
+        center: fromLonLat([0, 0]),
+        zoom: 2,
         constrainResolution: true
       }),
       controls: defaultControls().extend([
@@ -51,11 +53,22 @@ export class Geo {
 
   /**
    * Sets the view to the accordant zoom and center.
+   *
    * @param zoom Zoom.
    * @param center Center in long/lat.
    */
   setView(zoom: number, center: [number, number]) {
     this.map.getView().setZoom(10);
     this.map.getView().setCenter(fromLonLat(center));
+  }
+
+  /**
+   * Updates target and size of the map.
+   *
+   * @param target HTML container.
+   */
+  updateSize(target = 'map') {
+    this.map.setTarget(target);
+    this.map.updateSize();
   }
 }
