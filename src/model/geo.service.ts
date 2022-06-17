@@ -24,7 +24,7 @@ export class GeoService {
   readonly map: Map;
 
   /** Basic layer. */
-  readonly layerTile: LayerTile;
+  readonly layerTile: LayerTile<SourceOsm>;
 
   /** Sources for basic layer. */
   readonly sources: { readonly osm: SourceOsm; readonly stamen: SourceStamen; };
