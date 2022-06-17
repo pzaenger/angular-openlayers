@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { GeoService } from '../model/geo.service';
+import { GeoService } from './services/geo.service';
 
 @Component({
   selector: 'app-root',
@@ -13,15 +13,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(public geo: GeoService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.geolocation = navigator.geolocation;
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.geo.updateSize();
   }
 
-  locate() {
+  locate(): void {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.geo.setView(10, [position.coords.longitude, position.coords.latitude]);

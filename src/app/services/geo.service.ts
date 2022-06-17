@@ -77,7 +77,7 @@ export class GeoService {
    * @param zoom Zoom.
    * @param center Center in long/lat.
    */
-  setView(zoom: number, center: [number, number]) {
+  setView(zoom: number, center: [number, number]): void {
     this.map.getView().setZoom(10);
     this.map.getView().setCenter(fromLonLat(center));
   }
@@ -87,7 +87,7 @@ export class GeoService {
    *
    * @param target HTML container.
    */
-  updateSize(target = 'map') {
+  updateSize(target = 'map'): void {
     this.map.setTarget(target);
     this.map.updateSize();
   }
@@ -97,7 +97,7 @@ export class GeoService {
    *
    * @param source Source.
    */
-  setSource(source: 'osm' | 'stamen') {
+  setSource(source: 'osm' | 'stamen'): void {
     this.layerTile.setSource(this.sources[source]);
   }
 }
