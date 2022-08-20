@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { GeoService } from './services/geo.service';
@@ -13,6 +14,7 @@ import { MAT_BOTTOM_SHEET_DEFAULT_OPTIONS } from '@angular/material/bottom-sheet
     ControlsComponent
   ],
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     MaterialModule
   ],
