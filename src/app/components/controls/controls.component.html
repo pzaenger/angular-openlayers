@@ -1,0 +1,26 @@
+<p class="headline"><span>Layer</span></p>
+
+<div class="item-list">
+  <button mat-stroked-button
+          *ngFor="let source of geoService.tileSources"
+          [disabled]="source === geoService.selectedTileSource"
+          (click)="geoService.setTileSource(source)">
+    {{source.name}}
+  </button>
+</div>
+
+<p class="headline"><span>GeoJSON</span><br><small>Drag and drop a GeoJSON-file on the map to add data.</small></p>
+
+<div class="item-list">
+  <button mat-stroked-button
+          *ngFor="let vectorSource of geoService.vectorSources"
+          (click)="geoService.setVectorSource(vectorSource)">
+    {{vectorSource.name}}
+  </button>
+</div>
+
+<div class="close-button">
+  <button mat-icon-button (click)="close()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>

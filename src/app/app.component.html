@@ -1,7 +1,5 @@
-<div class="toolbar">
-  <button class="button" [disabled]="!geolocation" (click)="locate()">My position</button>
-  <button class="button" (click)="geo.setSource('osm')">OSM</button>
-  <button class="button" (click)="geo.setSource('stamen')">Stamen</button>
-</div>
-
 <div id="map" class="map"></div>
+
+<button class="map-controls-button" color="primary" mat-mini-fab (click)="openControls()">
+  <mat-icon>{{isControlsOpened ? 'expand_more' : 'expand_less'}}</mat-icon>
+</button>

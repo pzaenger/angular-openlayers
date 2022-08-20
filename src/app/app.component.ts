@@ -1,31 +1,32 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component } from '@angular/core';
 import { GeoService } from './services/geo.service';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { ControlsComponent } from './components/controls/controls.component';
+import { Subscription } from 'rxjs';
+import { AppService } from './services/app.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements AfterViewInit {
 
-  geolocation: Geolocation;
+  isControlsOpened = false;
 
-  constructor(public geo: GeoService) {
-  }
+  private readonly controlsStateSubscription: Subscription;
 
-  ngOnInit(): void {
-    this.geolocation = navigator.geolocation;
+  constructor(private appService: AppService, private geoService: GeoService, private bottomSheet: MatBottomSheet) {
+    this.controlsStateSubscription = this.appService.controlsState.subscribe(value => this.isControlsOpened = value);
   }
 
   ngAfterViewInit(): void {
-    this.geo.updateSize();
+    this.geoService.updateView();
+    this.geoService.setTileSource();
+    this.geoService.updateSize();
   }
 
-  locate(): void {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(position => {
-        this.geo.setView(10, [position.coords.longitude, position.coords.latitude]);
-      });
-    }
+  openControls(): void {
+    this.bottomSheet.open(ControlsComponent, { autoFocus: false });
   }
 }

@@ -1,17 +1,12 @@
-:host {
+.map {
+  width: 100%;
+  height: 100vh;
+}
 
-  .toolbar {
-    border-bottom: 1px solid #aaa;
-    background-color: #f5f5f5;
-
-    .button {
-      margin: 8px;
-      padding: 4px;
-    }
-  }
-
-  .map {
-    width: 100%;
-    height: calc(100vh - 45px);
-  }
+.map-controls-button {
+  position: fixed;
+  left: 50%;
+  bottom: 0.5em;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
 }

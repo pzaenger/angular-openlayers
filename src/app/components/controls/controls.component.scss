@@ -1,0 +1,19 @@
+.item-list {
+  display: grid;
+  grid-gap: 5px;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px;
+}
+
+.headline {
+  font-size: medium;
+
+  span {
+    font-weight: 500;
+  }
+}
