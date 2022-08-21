@@ -1,6 +1,6 @@
 # angular-openlayers
 
-Simple example of how to use [Angular](https://angular.io/) 14 and [OpenLayers](https://openlayers.org/) 7.
+Example of how to use [Angular](https://angular.io/) 14 and [OpenLayers](https://openlayers.org/) 7.
 
 The project includes [Angular Material](https://material.angular.io/) and a Dockerfile
 using [PM2](https://pm2.keymetrics.io/) to serve the bundled app. It also implements
