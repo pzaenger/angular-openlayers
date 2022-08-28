@@ -19,6 +19,13 @@
   "bugs": {
     "url": "https://github.com/pzaenger/angular-openlayers/issues"
   },
+  "keywords": [
+    "angular",
+    "angular-material",
+    "docker",
+    "openlayers",
+    "pm2"
+  ],
   "homepage": "https://github.com/pzaenger/angular-openlayers#readme",
   "dependencies": {
     "@angular/animations": "^14.1.0",
